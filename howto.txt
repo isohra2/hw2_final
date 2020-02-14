@@ -1,0 +1,9 @@
+0. Run on gdb, it gives the first answer right away.
+1. Add breakpoint to password in GDB, get to the rand function. Using "info locals" I got the number.
+2. Look up "curl_easy_perform", the OK code is the answer.
+3. Call ltrace on the executable and see the library calls that are being made. 
+Once that happens, you see that there is a request for a file named "iamspecial"
+Make that file and grant it rwx by using the chmod command.
+4. Change LD_LIBRARY_PATH to current path. Run the executable. Make a .h and .c file with the shared library's name and run it again. 
+Then you see that a function named "secertoperation" is being called, make that function ion the .c file. Then I saw that for the first run, the number
+needed to be 10, then 4. So I did static num = 16, then did num = num - 16. That gave me the secret code.
